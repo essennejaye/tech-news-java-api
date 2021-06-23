@@ -29,7 +29,7 @@ public class User implements Serializable {
 
     // Need to use FetchType.Lazy to resolve multiple bags exception
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Votes> votes;
+    private List<Vote> votes;
 
     // Need to use FetchType.Lazy to resolve multiple bags exception
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -90,11 +90,11 @@ public class User implements Serializable {
         this.posts = posts;
     }
 
-    public List<Votes> getVotes() {
+    public List<Vote> getVotes() {
         return votes;
     }
 
-    public void setVotes(List<Votes> votes) {
+    public void setVotes(List<Vote> votes) {
         this.votes = votes;
     }
 
