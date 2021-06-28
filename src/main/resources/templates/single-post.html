@@ -30,8 +30,14 @@
   </form>
 
   <div class="comments">
-    <div th:insert="fragments/comment-fragment :: comment-fragment"></div>
+    <h2>Comments</h2>
+    <ol>
+      <li th:each="comment : ${commentList}" class="comment">
+        <div th:insert="fragments/comment-fragment :: comment-fragment"></div>
+      </li>
+    </ol>
   </div>
+
   <div th:if="${loggedIn}">
     <script src="/js/upvote.js"></script>
   </div>

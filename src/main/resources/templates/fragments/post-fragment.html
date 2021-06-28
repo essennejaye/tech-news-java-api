@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -72,22 +73,23 @@
       </div>
     </div>
 
+
     <div th:if="${post.voteCount == 1}" class="meta">
-      [[${post.voteCount}]] point by [[${post.userName}]] on
+      [[${post.voteCount}]] point by [[${post.username}]] on
       <span th:text="${#dates.format(post.postedAt, 'MM-dd-YY')}"></span>
 
       <a th:href="@{/post/{id}(id=${post.id})}" th:if="${post.comments.size() == 1}">[[${post.comments.size()}]]
         comment</a>
-      <a th:href="@{/post/{id}(id=${post.id})}" th:unless="${post.comments.size() > 1}">[[${post.comments.size()}]]
+      <a th:href="@{/post/{id}(id=${post.id})}" th:unless="${post.comments.size() == 1}">[[${post.comments.size()}]]
         comments</a>
     </div>
-    <div th:unless="${post.voteCount > 1}" class="meta">
-      [[${post.voteCount}]] points by [[${post.userName}]] on
+    <div th:unless="${post.voteCount == 1}" class="meta">
+      [[${post.voteCount}]] points by [[${post.username}]] on
       <span th:text="${#dates.format(post.postedAt, 'MM-dd-YY')}"></span>
       |
       <a th:href="@{/post/{id}(id=${post.id})}" th:if="${post.comments.size() == 1}">[[${post.comments.size()}]]
         comment</a>
-      <a th:href="@{/post/{id}(id=${post.id})}" th:unless="${post.comments.size() > 1}">[[${post.comments.size()}]]
+      <a th:href="@{/post/{id}(id=${post.id})}" th:unless="${post.comments.size() == 1}">[[${post.comments.size()}]]
         comments</a>
     </div>
   </div>
